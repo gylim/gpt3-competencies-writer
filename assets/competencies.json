@@ -1,0 +1,39 @@
+{
+"competencies": [
+    {
+        "competency": "Market / User Research & Planning",
+        "levels": {
+            "l1": {
+                "1": "Deploy suitable quantitative research methods such as user surveys to understand the user / market needs",
+                "2": "Perform Internet research on market demand and existing products and competitions",
+                "3": "Generate idea to tackle user problem",
+                "4": "Utilise digital market research platforms (e.g. mobile & social media platforms)"
+            },
+            "l2": {
+                "1": "Deploy suitable qualitative research methods such as focus group studies and deep dive interviews to understand the user / market needs",
+                "2": "Design and conduct user / market research e.g. surveys",
+                "3": "Analyse and define target market segmentation",
+                "4": "Evaluate technical and schedule feasibilities of the solution"
+            }
+        },
+        "job_families": ["product_management"]
+    },
+    {
+        "competency": "Product Strategy",
+        "levels": {
+            "l1": {
+                "1": "Understand the foundation for the entire product lifecycle",
+                "2": "Knowledge in product thinking, such as product prioritisation and outcomes evaluation",
+                "3": "Keep abreast of latest product innovation efforts"
+            },
+            "l2": {
+                "1": "Identify product opportunities from user research and business problems",
+                "2": "Analyse competing proudcts and market demands",
+                "3": "Communicate product value proposition to external stakeholders",
+                "4": "Develop cohesive product strategies informed by data and insights research, tools and partner teams"
+            }
+        },
+        "job_families": ["product_management", "ux_design"]
+    }
+]
+}
