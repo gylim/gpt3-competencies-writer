@@ -9,8 +9,8 @@ const openai = new OpenAIApi(configuration);
 const initPrefix = `Write a resume paragraph describing how the Actions and Outcomes demonstrated application of Skill. Rephrase the words in Skill.
 Actions: `;
 const ocPrefix = `Outcomes: `;
-const skPrefix = `Skill: `
-const finalSuffix = `Paragraph: `
+const skPrefix = `Skill: `;
+const finalSuffix = `Paragraph: `;
 const generateAction = async (req, res) => {
     const baseCompletion = await openai.createCompletion({
         model: 'text-davinci-003',

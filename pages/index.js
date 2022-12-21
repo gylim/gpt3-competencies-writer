@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
-import competencies from '../assets/competencies.json';
 import { useState } from 'react';
 
 const Home = () => {
