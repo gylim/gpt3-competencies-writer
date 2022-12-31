@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import buildspaceLogo from '../assets/buildspace-logo.png';
+import govtechLogo from '../assets/govtech-logo.jpeg';
+import Dropdown from './dropdown';
 import { useState } from 'react';
+import competencies from '../assets/roles.json';
 
 const Home = () => {
   // Inputs
@@ -17,6 +19,27 @@ const Home = () => {
   const onUserChangeSkills = (event) => {
     setInputSkills(event.target.value);
   }
+  const [inputUpdates, setInputUpdates] = useState('');
+  const onUserChangeUpdates = (event) => {
+    setInputUpdates(event.target.value);
+  }
+  const [custom, setCustom] = useState(false);
+  const toggle = () => {
+    setCustom(!custom);
+  }
+  const [inputCompetencies, setInputCompetencies] = useState('');
+  const changeJob = (job) => {
+    setInputCompetencies(competencies[job].join(', '));
+  }
+
+  const options = [
+    {job: "Product Manager"},
+    {job: "Engagement Manager"},
+    {job: "Data Scientist"},
+    {job: "Quantitative Analyst"},
+    {job: "Data Engineer"},
+    {job: "AI Engineer"}
+  ]
 
   // OpenAI API interface
   const [apiOutput, setApiOutput] = useState('');
@@ -39,10 +62,27 @@ const Home = () => {
     setIsGenerating(false);
   }
 
+  const callGenerateEndpoint2 = async () => {
+    setIsGenerating(true);
+
+    const response = await fetch('api/generate2', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ inputUpdates, inputCompetencies }),
+    });
+
+    const data = await response.json();
+    const {output} = data;
+    setApiOutput(`${output.text}`);
+    setIsGenerating(false);
+  }
+
   return (
     <div className="root">
       <Head>
-        <title>GPT-3 Writer | buildspace</title>
+        <title>GPT-3 Competency Writer</title>
       </Head>
       <div className="container">
         <div className="header">
@@ -52,9 +92,14 @@ const Home = () => {
           <div className="header-subtitle">
             <h2>Turn point-form actions and outcomes into a competency write-up for a particular competency area</h2>
           </div>
+          <label className='header-toggle'>
+            <input type="checkbox" defaultChecked={custom} onClick={toggle} />
+            <span />
+            <strong>Custom Competency</strong>
+          </label>
         </div>
         <div className='prompt-container'>
-          <div className='prompt-row'>
+          {custom ? (<><div className='prompt-row'>
             <h3>Action: </h3>
             <textarea placeholder='Write the actions you took separated by commas'
             className='prompt-box'
@@ -84,7 +129,31 @@ const Home = () => {
                 {isGenerating ? <span className='loader'></span> : <p>Generate</p>}
               </div>
             </a>
+          </div></>) : (<>
+          <div className='prompt-row'>
+            <h3>Job Role: </h3>
+            <Dropdown placeHolder="Select Job Title" options={options} onChange={(value) => changeJob(value)}/>
           </div>
+          <div className='prompt-row'>
+            <h3>Updates: </h3>
+            <textarea placeholder='Copy and paste your monthly update pointers'
+            className='prompt-box bigger'
+            value={inputUpdates}
+            onChange={onUserChangeUpdates}
+            />
+          </div>
+
+          <div className='prompt-buttons'>
+            <a className={isGenerating ? 'generate-button loading' : 'generate-button'} onClick={callGenerateEndpoint2}>
+              <div className='generate'>
+                {isGenerating ? <span className='loader'></span> : <p>Generate</p>}
+              </div>
+            </a>
+          </div>
+          <div className='prompt-row'>
+
+          </div>
+          </>)}
           {apiOutput && (
             <div className='output'>
               <div className='output-header-container'>
@@ -101,13 +170,12 @@ const Home = () => {
       </div>
       <div className="badge-container grow">
         <a
-          href="https://buildspace.so/builds/ai-writer"
+          href="https://www.tech.gov.sg"
           target="_blank"
           rel="noreferrer"
         >
           <div className="badge">
-            <Image src={buildspaceLogo} alt="buildspace logo" />
-            <p>build with buildspace</p>
+            <Image src={govtechLogo} alt="govtech logo" />
           </div>
         </a>
       </div>

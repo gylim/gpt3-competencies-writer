@@ -1,0 +1,8 @@
+{
+    "Product Manager": ["Market research and planning", "Product go-to-market", "Product life cycle management", "Business analysis", "Product strategy", "Agile methodologies tools & delivery"],
+    "Engagement Manager": ["Brand strategy and management", "Communications strategy", "Business analysis", "Business development and needs analysis", "Project management", "Change management"],
+    "Data Scientist": ["Data collection", "Data quality", "Data systems architecture", "Data systems integration", "Data pipeline setup", "Statistical techniques", "Exploratory analysis", "Machine learning", "Optimisation techniques", "Charts and dashboards", "Data storytelling", "Scripting", "Frontend and backend development", "ML optimisation"],
+    "Quantitative Analyst": ["Data collection", "Data quality", "Statistical techniques", "Exploratory analysis", "Machine learning", "Charts and dashboards", "Data storytelling", "Scripting"],
+    "Data Engineer": ["Data collection", "Data quality", "Data systems architecture", "Data systems integration", "Data pipeline setup", "Machine learning", "Charts and dashboards", "Data storytelling", "Frontend and backend development"],
+    "AI Engineer": ["Data collection", "Data quality", "Data systems architecture", "Data systems integration", "Data pipeline setup", "Statistical techniques", "Exploratory analysis", "Machine learning", "Charts and dashboards", "Scripting", "Frontend and backend development", "ML optimisation"]
+}

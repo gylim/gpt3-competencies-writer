@@ -66,9 +66,16 @@ body {
     color: rgba(255, 255, 255, 0.75);
 }
 
+.header-toggle strong {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+    color: rgba(255, 255, 255, 0.75);
+}
+
 .prompt-container {
     place-content: flex-end center;
-    align-items: center;
     display: flex;
     flex: 0 0 auto;
     flex-flow: column nowrap;
@@ -111,6 +118,10 @@ body {
     color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
     text-transform: none;
+}
+
+.bigger {
+    height: 100px;
 }
 
 .prompt-row {
@@ -432,4 +443,109 @@ textarea {
     100% {
         transform: rotate(360deg);
     }
+}
+
+label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+span {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #2c3e50;
+    transition: 0.3s;
+    border-radius: 30px;
+}
+
+strong {
+    position: absolute;
+    left: 100%;
+    width: max-content;
+    height: 100%;
+    line-height: 30px;
+    margin-left: 10px;
+    margin-top: 10%;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+span:before {
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 3px;
+    bottom: 2.6px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input:checked + span {
+    background-color: #00c853;
+}
+
+input:checked + span:before {
+    transform: translateX(29px);
+}
+
+.dropdown-container {
+    text-align: left;
+    border: 1px solid #ccc;
+    position: relative;
+    border-radius: 16px;
+    color: #ffffff;
+    width: 30%;
+    height: 80%;
+}
+
+.dropdown-input {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.dropdown-menu {
+    position: absolute;
+    transform: translateY(4px);
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);;
+    border-radius: 5px;
+    overflow: auto;
+    max-height: 500px;
+    background-color: rgba(0, 0, 0);
+    z-index: 5;
+}
+
+.dropdown-item {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(134, 133, 133);
+}
+
+.dropdown-item.selected {
+    background-color: #00c853;
+    color: #fff;
+}
+
+.dropdown-tool {
+    color: #fff;
 }
